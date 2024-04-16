@@ -73,6 +73,13 @@ mod test {
 
         assert_eq!(list.pop(), Some(3));
         assert_eq!(list.pop(), Some(1));
+
+        list.push(5);
+        assert_eq!(list.peek(), Some(&5));
+        list.peek_mut().map(|value| *value = 42);
+        assert_eq!(list.peek(), Some(&42));
+
+        assert_eq!(list.pop(), Some(42));
         assert_eq!(list.pop(), None);
     }
 }
